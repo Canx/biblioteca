@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="1" failures="0" hostname="hal9000" name="biblioteca.LibroTests" tests="2" time="0.164" timestamp="2011-05-17T21:52:06">
+<testsuite errors="2" failures="0" hostname="hal9000" name="biblioteca.LibroTests" tests="2" time="0.142" timestamp="2011-05-18T20:19:22">
   <properties />
-  <testcase classname="biblioteca.LibroTests" name="testPersist" time="0.155">
-    <error message="No signature of method: biblioteca.LibroTests.mockDomain() is applicable for argument types: (java.lang.Class, java.util.LinkedHashMap) values: [class biblioteca.Libro, [isbn:111, titulo:Prueba, autor:Alguien, editorial:Anaya, anyo:1992, descripcion:, fecha:Tue May 17 23:52:06 CEST 2011]]" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: biblioteca.LibroTests.mockDomain() is applicable for argument types: (java.lang.Class, java.util.LinkedHashMap) values: [class biblioteca.Libro, [isbn:111, titulo:Prueba, autor:Alguien, editorial:Anaya, anyo:1992, descripcion:, fecha:Tue May 17 23:52:06 CEST 2011]]
-	at biblioteca.LibroTests.testPersist(LibroTests.groovy:15)
+  <testcase classname="biblioteca.LibroTests" name="testPersist" time="0.095">
+    <error message="No signature of method: static biblioteca.Libro.list() is applicable for argument types: () values: []
+Possible solutions: is(java.lang.Object), wait(), wait(long), use([Ljava.lang.Object;), split(groovy.lang.Closure), find(groovy.lang.Closure)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static biblioteca.Libro.list() is applicable for argument types: () values: []
+Possible solutions: is(java.lang.Object), wait(), wait(long), use([Ljava.lang.Object;), split(groovy.lang.Closure), find(groovy.lang.Closure)
+	at biblioteca.LibroTests.setUp(LibroTests.groovy:8)
 </error>
   </testcase>
-  <testcase classname="biblioteca.LibroTests" name="testToString" time="0.0050" />
+  <testcase classname="biblioteca.LibroTests" name="testToString" time="0.042">
+    <error message="No signature of method: static biblioteca.Libro.list() is applicable for argument types: () values: []
+Possible solutions: is(java.lang.Object), wait(), wait(long), use([Ljava.lang.Object;), split(groovy.lang.Closure), find(groovy.lang.Closure)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static biblioteca.Libro.list() is applicable for argument types: () values: []
+Possible solutions: is(java.lang.Object), wait(), wait(long), use([Ljava.lang.Object;), split(groovy.lang.Closure), find(groovy.lang.Closure)
+	at biblioteca.LibroTests.setUp(LibroTests.groovy:8)
+</error>
+  </testcase>
   <system-out><![CDATA[--Output from testPersist--
 --Output from testToString--
 ]]></system-out>
