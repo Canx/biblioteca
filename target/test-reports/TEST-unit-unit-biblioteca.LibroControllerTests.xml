@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="hal9000" name="biblioteca.LibroControllerTests" tests="1" time="0.026" timestamp="2011-05-18T20:19:21">
+<testsuite errors="0" failures="0" hostname="hal9000" name="biblioteca.LibroControllerTests" tests="1" time="0.042" timestamp="2011-05-18T22:53:29">
   <properties />
-  <testcase classname="biblioteca.LibroControllerTests" name="testSomething" time="0.023" />
+  <testcase classname="biblioteca.LibroControllerTests" name="testSomething" time="0.025" />
   <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>
   <system-err><![CDATA[--Output from testSomething--

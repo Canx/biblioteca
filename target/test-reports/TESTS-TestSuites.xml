@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="hal9000" id="0" name="LibroControllerTests" package="biblioteca" tests="1" time="0.026" timestamp="2011-05-18T20:19:21">
+  <testsuite errors="0" failures="0" hostname="hal9000" id="0" name="LibroControllerTests" package="biblioteca" tests="1" time="0.042" timestamp="2011-05-18T22:53:29">
       <properties />
 
-      <testcase classname="biblioteca.LibroControllerTests" name="testSomething" time="0.023" />
+      <testcase classname="biblioteca.LibroControllerTests" name="testSomething" time="0.025" />
 
       <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>
@@ -12,24 +12,12 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="2" failures="0" hostname="hal9000" id="1" name="LibroTests" package="biblioteca" tests="2" time="0.142" timestamp="2011-05-18T20:19:22">
+  <testsuite errors="0" failures="0" hostname="hal9000" id="1" name="LibroTests" package="biblioteca" tests="2" time="1.058" timestamp="2011-05-18T22:53:29">
       <properties />
 
-      <testcase classname="biblioteca.LibroTests" name="testPersist" time="0.095">
-          <error message="No signature of method: static biblioteca.Libro.list() is applicable for argument types: () values: [] Possible solutions: is(java.lang.Object), wait(), wait(long), use([Ljava.lang.Object;), split(groovy.lang.Closure), find(groovy.lang.Closure)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static biblioteca.Libro.list() is applicable for argument types: () values: []
-Possible solutions: is(java.lang.Object), wait(), wait(long), use([Ljava.lang.Object;), split(groovy.lang.Closure), find(groovy.lang.Closure)
-	at biblioteca.LibroTests.setUp(LibroTests.groovy:8)
-</error>
+      <testcase classname="biblioteca.LibroTests" name="testPersist" time="1.022" />
 
-      </testcase>
-
-      <testcase classname="biblioteca.LibroTests" name="testToString" time="0.042">
-          <error message="No signature of method: static biblioteca.Libro.list() is applicable for argument types: () values: [] Possible solutions: is(java.lang.Object), wait(), wait(long), use([Ljava.lang.Object;), split(groovy.lang.Closure), find(groovy.lang.Closure)" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: static biblioteca.Libro.list() is applicable for argument types: () values: []
-Possible solutions: is(java.lang.Object), wait(), wait(long), use([Ljava.lang.Object;), split(groovy.lang.Closure), find(groovy.lang.Closure)
-	at biblioteca.LibroTests.setUp(LibroTests.groovy:8)
-</error>
-
-      </testcase>
+      <testcase classname="biblioteca.LibroTests" name="testToString" time="0.033" />
 
       <system-out><![CDATA[--Output from testPersist--
 --Output from testToString--
@@ -40,10 +28,10 @@ Possible solutions: is(java.lang.Object), wait(), wait(long), use([Ljava.lang.Ob
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="hal9000" id="2" name="OperacionControllerTests" package="biblioteca" tests="1" time="0.6" timestamp="2011-05-18T20:19:21">
+  <testsuite errors="0" failures="0" hostname="hal9000" id="2" name="OperacionControllerTests" package="biblioteca" tests="1" time="0.728" timestamp="2011-05-18T22:53:28">
       <properties />
 
-      <testcase classname="biblioteca.OperacionControllerTests" name="testSomething" time="0.597" />
+      <testcase classname="biblioteca.OperacionControllerTests" name="testSomething" time="0.724" />
 
       <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>
@@ -52,10 +40,10 @@ Possible solutions: is(java.lang.Object), wait(), wait(long), use([Ljava.lang.Ob
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="hal9000" id="3" name="OperacionTests" package="biblioteca" tests="1" time="0.0090" timestamp="2011-05-18T20:19:21">
+  <testsuite errors="0" failures="0" hostname="hal9000" id="3" name="OperacionTests" package="biblioteca" tests="1" time="0.0070" timestamp="2011-05-18T22:53:29">
       <properties />
 
-      <testcase classname="biblioteca.OperacionTests" name="testSomething" time="0.0020" />
+      <testcase classname="biblioteca.OperacionTests" name="testSomething" time="0.0030" />
 
       <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>
@@ -64,10 +52,10 @@ Possible solutions: is(java.lang.Object), wait(), wait(long), use([Ljava.lang.Ob
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="hal9000" id="4" name="UsuarioControllerTests" package="biblioteca" tests="1" time="0.037" timestamp="2011-05-18T20:19:21">
+  <testsuite errors="0" failures="0" hostname="hal9000" id="4" name="UsuarioControllerTests" package="biblioteca" tests="1" time="0.039" timestamp="2011-05-18T22:53:29">
       <properties />
 
-      <testcase classname="biblioteca.UsuarioControllerTests" name="testSomething" time="0.025" />
+      <testcase classname="biblioteca.UsuarioControllerTests" name="testSomething" time="0.017" />
 
       <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>
@@ -76,10 +64,10 @@ Possible solutions: is(java.lang.Object), wait(), wait(long), use([Ljava.lang.Ob
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="hal9000" id="5" name="UsuarioTests" package="biblioteca" tests="1" time="0.366" timestamp="2011-05-18T20:19:20">
+  <testsuite errors="0" failures="0" hostname="hal9000" id="5" name="UsuarioTests" package="biblioteca" tests="1" time="0.35" timestamp="2011-05-18T22:53:28">
       <properties />
 
-      <testcase classname="biblioteca.UsuarioTests" name="testSomething" time="0.334" />
+      <testcase classname="biblioteca.UsuarioTests" name="testSomething" time="0.311" />
 
       <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>
