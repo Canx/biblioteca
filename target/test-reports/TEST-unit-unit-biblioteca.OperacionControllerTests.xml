@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="hal9000" name="biblioteca.OperacionControllerTests" tests="1" time="0.584" timestamp="2011-05-17T21:52:05">
+  <properties />
+  <testcase classname="biblioteca.OperacionControllerTests" name="testSomething" time="0.579" />
+  <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+  <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+</testsuite>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="hal9000" id="0" name="LibroControllerTests" package="biblioteca" tests="1" time="0.049" timestamp="2011-05-17T21:52:06">
+      <properties />
+
+      <testcase classname="biblioteca.LibroControllerTests" name="testSomething" time="0.039" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="1" failures="0" hostname="hal9000" id="1" name="LibroTests" package="biblioteca" tests="2" time="0.164" timestamp="2011-05-17T21:52:06">
+      <properties />
+
+      <testcase classname="biblioteca.LibroTests" name="testPersist" time="0.155">
+          <error message="No signature of method: biblioteca.LibroTests.mockDomain() is applicable for argument types: (java.lang.Class, java.util.LinkedHashMap) values: [class biblioteca.Libro, [isbn:111, titulo:Prueba, autor:Alguien, editorial:Anaya, anyo:1992, descripcion:, fecha:Tue May 17 23:52:06 CEST 2011]]" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: biblioteca.LibroTests.mockDomain() is applicable for argument types: (java.lang.Class, java.util.LinkedHashMap) values: [class biblioteca.Libro, [isbn:111, titulo:Prueba, autor:Alguien, editorial:Anaya, anyo:1992, descripcion:, fecha:Tue May 17 23:52:06 CEST 2011]]
+	at biblioteca.LibroTests.testPersist(LibroTests.groovy:15)
+</error>
+
+      </testcase>
+
+      <testcase classname="biblioteca.LibroTests" name="testToString" time="0.0050" />
+
+      <system-out><![CDATA[--Output from testPersist--
+--Output from testToString--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testPersist--
+--Output from testToString--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="hal9000" id="2" name="OperacionControllerTests" package="biblioteca" tests="1" time="0.584" timestamp="2011-05-17T21:52:05">
+      <properties />
+
+      <testcase classname="biblioteca.OperacionControllerTests" name="testSomething" time="0.579" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="hal9000" id="3" name="OperacionTests" package="biblioteca" tests="1" time="0.0080" timestamp="2011-05-17T21:52:06">
+      <properties />
+
+      <testcase classname="biblioteca.OperacionTests" name="testSomething" time="0.0020" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="hal9000" id="4" name="UsuarioControllerTests" package="biblioteca" tests="1" time="0.036" timestamp="2011-05-17T21:52:06">
+      <properties />
+
+      <testcase classname="biblioteca.UsuarioControllerTests" name="testSomething" time="0.02" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="hal9000" id="5" name="UsuarioTests" package="biblioteca" tests="1" time="0.296" timestamp="2011-05-17T21:52:05">
+      <properties />
+
+      <testcase classname="biblioteca.UsuarioTests" name="testSomething" time="0.275" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+</testsuites>
