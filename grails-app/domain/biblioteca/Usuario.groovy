@@ -6,6 +6,7 @@ class Usuario {
   String nombre
   String apellidos
   String tipo
+  String email
 
   static hasMany = [operaciones:Operacion]
 
@@ -14,6 +15,7 @@ class Usuario {
     password(size:6..20, blank:false, password:true)
     nombre(blank:false)
     apellidos(blank:false)
+    email(email:true, blank:false)
     tipo(inList:["administrador", "bibliotecario", "profesor", "socio"])
   }
 

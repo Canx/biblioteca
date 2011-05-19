@@ -1,1 +1,4 @@
---Output from testSomething--
+--Output from testValidateShortLoginFailure--
+--Output from testValidateLongLoginFailure--
+--Output from testValidateEmailFailure--
+--Output from testString--

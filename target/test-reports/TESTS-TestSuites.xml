@@ -1,78 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="hal9000" id="0" name="LibroControllerTests" package="biblioteca" tests="1" time="0.042" timestamp="2011-05-18T22:53:29">
+  <testsuite errors="0" failures="0" hostname="hal9000" id="0" name="UsuarioTests" package="biblioteca" tests="4" time="1.438" timestamp="2011-05-19T10:58:39">
       <properties />
 
-      <testcase classname="biblioteca.LibroControllerTests" name="testSomething" time="0.025" />
+      <testcase classname="biblioteca.UsuarioTests" name="testValidateShortLoginFailure" time="1.26" />
 
-      <system-out><![CDATA[--Output from testSomething--
+      <testcase classname="biblioteca.UsuarioTests" name="testValidateLongLoginFailure" time="0.041" />
+
+      <testcase classname="biblioteca.UsuarioTests" name="testValidateEmailFailure" time="0.078" />
+
+      <testcase classname="biblioteca.UsuarioTests" name="testString" time="0.039" />
+
+      <system-out><![CDATA[--Output from testValidateShortLoginFailure--
+--Output from testValidateLongLoginFailure--
+--Output from testValidateEmailFailure--
+--Output from testString--
 ]]></system-out>
 
-      <system-err><![CDATA[--Output from testSomething--
-]]></system-err>
-
-  </testsuite>
-  <testsuite errors="0" failures="0" hostname="hal9000" id="1" name="LibroTests" package="biblioteca" tests="2" time="1.058" timestamp="2011-05-18T22:53:29">
-      <properties />
-
-      <testcase classname="biblioteca.LibroTests" name="testPersist" time="1.022" />
-
-      <testcase classname="biblioteca.LibroTests" name="testToString" time="0.033" />
-
-      <system-out><![CDATA[--Output from testPersist--
---Output from testToString--
-]]></system-out>
-
-      <system-err><![CDATA[--Output from testPersist--
---Output from testToString--
-]]></system-err>
-
-  </testsuite>
-  <testsuite errors="0" failures="0" hostname="hal9000" id="2" name="OperacionControllerTests" package="biblioteca" tests="1" time="0.728" timestamp="2011-05-18T22:53:28">
-      <properties />
-
-      <testcase classname="biblioteca.OperacionControllerTests" name="testSomething" time="0.724" />
-
-      <system-out><![CDATA[--Output from testSomething--
-]]></system-out>
-
-      <system-err><![CDATA[--Output from testSomething--
-]]></system-err>
-
-  </testsuite>
-  <testsuite errors="0" failures="0" hostname="hal9000" id="3" name="OperacionTests" package="biblioteca" tests="1" time="0.0070" timestamp="2011-05-18T22:53:29">
-      <properties />
-
-      <testcase classname="biblioteca.OperacionTests" name="testSomething" time="0.0030" />
-
-      <system-out><![CDATA[--Output from testSomething--
-]]></system-out>
-
-      <system-err><![CDATA[--Output from testSomething--
-]]></system-err>
-
-  </testsuite>
-  <testsuite errors="0" failures="0" hostname="hal9000" id="4" name="UsuarioControllerTests" package="biblioteca" tests="1" time="0.039" timestamp="2011-05-18T22:53:29">
-      <properties />
-
-      <testcase classname="biblioteca.UsuarioControllerTests" name="testSomething" time="0.017" />
-
-      <system-out><![CDATA[--Output from testSomething--
-]]></system-out>
-
-      <system-err><![CDATA[--Output from testSomething--
-]]></system-err>
-
-  </testsuite>
-  <testsuite errors="0" failures="0" hostname="hal9000" id="5" name="UsuarioTests" package="biblioteca" tests="1" time="0.35" timestamp="2011-05-18T22:53:28">
-      <properties />
-
-      <testcase classname="biblioteca.UsuarioTests" name="testSomething" time="0.311" />
-
-      <system-out><![CDATA[--Output from testSomething--
-]]></system-out>
-
-      <system-err><![CDATA[--Output from testSomething--
+      <system-err><![CDATA[--Output from testValidateShortLoginFailure--
+--Output from testValidateLongLoginFailure--
+--Output from testValidateEmailFailure--
+--Output from testString--
 ]]></system-err>
 
   </testsuite>

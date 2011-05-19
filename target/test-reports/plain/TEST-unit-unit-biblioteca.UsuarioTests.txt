@@ -1,10 +1,19 @@
 Testsuite: biblioteca.UsuarioTests
-Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0,35 sec
+Tests run: 4, Failures: 0, Errors: 0, Time elapsed: 1,438 sec
 ------------- Standard Output ---------------
---Output from testSomething--
+--Output from testValidateShortLoginFailure--
+--Output from testValidateLongLoginFailure--
+--Output from testValidateEmailFailure--
+--Output from testString--
 ------------- ---------------- ---------------
 ------------- Standard Error -----------------
---Output from testSomething--
+--Output from testValidateShortLoginFailure--
+--Output from testValidateLongLoginFailure--
+--Output from testValidateEmailFailure--
+--Output from testString--
 ------------- ---------------- ---------------
 
-Testcase: testSomething took 0,312 sec
+Testcase: testValidateShortLoginFailure took 1,26 sec
+Testcase: testValidateLongLoginFailure took 0,041 sec
+Testcase: testValidateEmailFailure took 0,078 sec
+Testcase: testString took 0,039 sec
