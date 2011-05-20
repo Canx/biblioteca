@@ -13,6 +13,8 @@
         </div>
         <div id="grailsLogo"><a href="http://grails.org"><img src="${resource(dir:'images',file:'grails_logo.png')}" alt="Grails" border="0" /></a></div>
         <g:layoutBody />
-        <g:render template="/common/footer"/>
+        <div id="footer">
+          <g:render template="/common/footer"/>
+        </div>
     </body>
 </html>
