@@ -3,38 +3,42 @@ import biblioteca.*
 class BootStrap {
 
   def init = { servletContext ->
-    new Usuario(login: 'frangarcia', 
+    def u1 = new Usuario(login: 'frangarcia', 
                 password: 'mipassword',
                 nombre:'Francisco José',
                 apellidos:'García Rico',
-                tipo: 'administrador'
+                tipo: 'administrador',
+                email: 'fran@gmail.com'
                ).save()
     new Usuario(login: "pablomarmol",
                 password: "marmol",
                 nombre: "Pablo",
                 apellidos:'Mar Mol',
-                tipo: "bibliotecario"
+                tipo: "bibliotecario",
+                email: "marmol@gmail.com"
               ).save()
     new Usuario(login: "pedropp",
                 password:"picapiedra",
                 nombre:"Roberto",
                 apellidos:"Pica Piedra",
-                tipo:"profesor"
+                tipo:"profesor",
+                email:"pedropp@gmail.com"
                 ).save()
     new Usuario(login:'wilmapp',
                 password:'picapiedra2',
                 nombre:'Wilma',
                 apellidos:'Pica Piedra',
-                tipo:"socio"
+                tipo:"socio",
+                email:"wilmapp@gmail.com"
                ).save()
 
-    new Libro(titulo:'La colmena',
+    def l1 = new Libro(titulo:'La colmena',
               anyo:1951,
               autor:"Camilo José Cela Trulock",
               isbn: '843992688X',
               editorial:'Anaya',
               fecha:new Date(),
-              descripcion:''
+              descripcion:'',
               ).save()
 
     new Libro(titulo:'El ingenioso hidalgo don Quijote de la Mancha',
@@ -60,6 +64,14 @@ class BootStrap {
               editorial:'Anaya',
               fecha:new Date(),
               descripcion:''
+              ).save()
+    new Operacion(
+              tipo:'prestamo',
+              estado:true,
+              fechaInicio:Date.parse("dd/MM/yyyy","12/01/2011"),
+              fechaFin:Date.parse("dd/MM/yyyy","10/6/2011"),
+              usuario: u1,
+              libro: l1
               ).save()
   }
   def destroy = {}
