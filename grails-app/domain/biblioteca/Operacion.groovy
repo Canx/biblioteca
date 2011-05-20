@@ -18,6 +18,6 @@ class Operacion {
   }
 
   String toString() {
-    "$tipo ($estado) [$fechaInicio - $fechaFin]"
+    "$tipo ($estado) [" + fechaInicio.format("dd/MM/yyyy") + " - " + fechaFin.format("dd/MM/yyyy") + "]"
   }
 }
