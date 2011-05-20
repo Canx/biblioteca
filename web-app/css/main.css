@@ -278,3 +278,57 @@ th.desc a {
     padding:3px;
     border-top: 1px solid #333;
 }
+
+#header {
+    text-align:left;
+    width:778px;
+    margin: 0px;
+    padding: 5px 0;
+}
+
+#header #menu {
+    float: right;
+    width: 240px;
+    text-align:right;
+    font-size: 10px;
+}
+
+#headertitle {
+    width: 778px;
+    background: #336699;
+    height: 70px;
+    margin: 0px;
+}
+
+#headertitle h1 {
+    font-family: Arial, sans-serif;
+    color: White;
+    padding: 20px 0 0 6px;
+    font-size: 1.6em;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: normal;
+    font-size-adjust: none;
+    font-stretch: normal;
+    color: #333333;
+}
+
+#page {
+    width: 778px;
+    margin: 0px auto;
+    padding: 4px 0;
+    test-align: left;
+}
+
+#content {
+    float: left;
+    color: #000;
+}
