@@ -16,6 +16,11 @@
         </div>
         <div id="headertitle">
           <h1>Biblioteca</h1>
+          <div id="enlaces_menu">
+            <g:link controller="libro">Libros</g:link>
+            <g:link controller="usuario">Usuarios</g:link>
+            <g:link controller="operacion">Operaciones</g:link>
+          </div>
         </div>
         <div id="content">
           <g:layoutBody />
