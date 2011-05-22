@@ -333,3 +333,12 @@ body {
     float: left;
     color: #000;
 }
+
+#mainmenu {
+  margin: 0 20px;
+}
+
+#mainmenu .menuitem {
+    background: yellow;
+    color: blue;
+}

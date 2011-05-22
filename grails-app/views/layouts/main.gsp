@@ -6,8 +6,9 @@
         <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
         <g:layoutHead />
         <g:javascript library="application" />
+        <gui:resources components="['dialog']" mode="debug"/>
     </head>
-    <body>
+    <body class="yui-skin-sam">
         <div id="spinner" class="spinner" style="display:none;">
             <img src="${resource(dir:'images',file:'spinner.gif')}" alt="${message(code:'spinner.alt',default:'Loading...')}" />
         </div>
@@ -16,11 +17,11 @@
         </div>
         <div id="headertitle">
           <h1>Biblioteca</h1>
-          <div id="enlaces_menu">
-            <g:link controller="libro">Libros</g:link>
-            <g:link controller="usuario">Usuarios</g:link>
-            <g:link controller="operacion">Operaciones</g:link>
-          </div>
+       </div>
+         <div id="mainmenu">
+          <g:link class="menuitem" controller="libro">Libros</g:link>
+          <g:link class="menuitem" controller="usuario">Usuarios</g:link>
+          <g:link class="menuitem" controller="operacion">Operaciones</g:link>
         </div>
         <div id="content">
           <g:layoutBody />
