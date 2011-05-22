@@ -17,7 +17,6 @@
       <script>
         var logoutHandler = function(o) {
           window.location="${createLink(controller:'usuario',action:'logout')}"
-          this.cancel();
         }
       </script>
     </g:if>
