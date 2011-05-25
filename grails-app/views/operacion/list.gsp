@@ -22,8 +22,6 @@
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'operacion.id.label', default: 'Id')}" />
-                        
                             <g:sortableColumn property="tipo" title="${message(code: 'operacion.tipo.label', default: 'Tipo')}" />
                         
                             <g:sortableColumn property="estado" title="${message(code: 'operacion.estado.label', default: 'Estado')}" />
@@ -33,25 +31,21 @@
                             <g:sortableColumn property="fechaFin" title="${message(code: 'operacion.fechaFin.label', default: 'Fecha Fin')}" />
                         
                             <th><g:message code="operacion.libro.label" default="Libro" /></th>
-                        
+                            <th><g:message code="operacion.usuario.label" default="Usuario" /></th>
                         </tr>
                     </thead>
                     <tbody>
                     <g:each in="${operacionInstanceList}" status="i" var="operacionInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
-                            <td><g:link action="show" id="${operacionInstance.id}">${fieldValue(bean: operacionInstance, field: "id")}</g:link></td>
-                        
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}"
+onclick="location.href='${createLink(action: 'show', id:
+operacionInstance.id)}'">
                             <td>${fieldValue(bean: operacionInstance, field: "tipo")}</td>
-                        
                             <td><g:formatBoolean boolean="${operacionInstance.estado}" /></td>
-                        
                             <td><g:formatDate date="${operacionInstance.fechaInicio}" /></td>
-                        
                             <td><g:formatDate date="${operacionInstance.fechaFin}" /></td>
-                        
                             <td>${fieldValue(bean: operacionInstance, field: "libro")}</td>
-                        
+                            <td>${fieldValue(bean: operacionInstance,
+field: "usuario")}</td>
                         </tr>
                     </g:each>
                     </tbody>

@@ -21,9 +21,6 @@
                 <table>
                     <thead>
                         <tr>
-                        
-                            <g:sortableColumn property="id" title="${message(code: 'libro.id.label', default: 'Id')}" />
-                        
                             <g:sortableColumn property="isbn" title="${message(code: 'libro.isbn.label', default: 'Isbn')}" />
                         
                             <g:sortableColumn property="titulo" title="${message(code: 'libro.titulo.label', default: 'Titulo')}" />
@@ -33,25 +30,27 @@
                             <g:sortableColumn property="editorial" title="${message(code: 'libro.editorial.label', default: 'Editorial')}" />
                         
                             <g:sortableColumn property="anyo" title="${message(code: 'libro.anyo.label', default: 'Anyo')}" />
+                            <g:sortableColumn property="descripcion"
+title="${message(code: 'libro.descripcion.label', default:
+'Descripción')}" />
+                            <g:sortableColumn property="fecha"
+title="${message(code: 'libro.fecha.label', default: 'Fecha')}" />
                         
                         </tr>
                     </thead>
                     <tbody>
                     <g:each in="${libroInstanceList}" status="i" var="libroInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
-                            <td><g:link action="show" id="${libroInstance.id}">${fieldValue(bean: libroInstance, field: "id")}</g:link></td>
-                        
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}"
+onclick="location.href='${createLink(action: 'show', id: libroInstance.id)}'">
                             <td>${fieldValue(bean: libroInstance, field: "isbn")}</td>
-                        
                             <td>${fieldValue(bean: libroInstance, field: "titulo")}</td>
-                        
                             <td>${fieldValue(bean: libroInstance, field: "autor")}</td>
-                        
                             <td>${fieldValue(bean: libroInstance, field: "editorial")}</td>
-                        
                             <td>${fieldValue(bean: libroInstance, field: "anyo")}</td>
-                        
+                            <td>${fieldValue(bean: libroInstance, field:
+"descripcion")}</td>
+                            <td><g:formatDate format="dd/MM/yyyy" date="${fieldValue(bean:
+libroInstance, field: "fecha")}" /></td>
                         </tr>
                     </g:each>
                     </tbody>
