@@ -78,6 +78,8 @@ log4j = {
     }
 
     trace "grails.app.controller.biblioteca.UsuarioController"
+    trace "grails.app.controller.biblioteca.LibroController"
+    trace "grails.app.controller.biblioteca.OperacionController"
 
     error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
            'org.codehaus.groovy.grails.web.pages', //  GSP

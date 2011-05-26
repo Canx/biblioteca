@@ -4,6 +4,14 @@ class OperacionController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    def beforeInterceptor = {
+        log.trace("${session?.usuario?.login} Empieza la acción ${controllerName} Controlador.${actionName}() : parámetros $params")
+    }
+
+    def afterInterceptor = { model ->
+        log.trace("${session?.usuario?.login} Termina la acción ${controllerName} Controlador.${actionName}() : devuelve $model")
+    }
+
     def index = {
         redirect(action: "list", params: params)
     }
