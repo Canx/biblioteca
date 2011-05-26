@@ -20,5 +20,6 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
         mockParams.password = usuario1.password
         controller.handleLogin()
         assertEquals controller.session.usuario, usuario1
+        assertEquals "operacion", controller.redirectArgs["controller"]
     }
 }
