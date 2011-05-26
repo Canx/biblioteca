@@ -22,4 +22,12 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
         assertEquals controller.session.usuario, usuario1
         assertEquals "operacion", controller.redirectArgs["controller"]
     }
+
+    void testHandleLoginFailure() {
+        mockParams.login = "loginmalo"
+        mockParams.password = "passwordmalo"
+        controller.handleLogin()
+        assertEquals controller.session.usuario, null
+        assertEquals controller.flash.message, "El usuario ${controller.params.login} no existe"
+    }
 }
