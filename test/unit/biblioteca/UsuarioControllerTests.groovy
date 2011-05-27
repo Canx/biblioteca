@@ -28,7 +28,7 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
         mockParams.password = "passwordmalo"
         controller.handleLogin()
         assertNull controller.session.usuario
-        assertEquals controller.flash.message, "El usuario ${controller.params.login} no existe"
+        assertEquals mockFlash.message, "El usuario ${controller.params.login} no existe"
     }
 
     void testLogout() {
@@ -43,14 +43,14 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
     // TODO
     void testSaveUser() {
         mockSession.usuario = usuario1
-        mockParams.login = "usuario2"
-        mockParams.password = "passpass"
-        mockParams.nombre = "Usuario 2"
-        mockParams.apellidos = "Apellido1 Apellido2"
-        mockParams.tipo = "socio"
-        mockParams.email = "usuario2@gmail.com"
-        controller.save
-        assertEquals "create", renderArgs["view"]
+        controller.params.login = "usuario2"
+        controller.params.password = "passpass"
+        controller.params.nombre = "Usuario 2"
+        controller.params.apellidos = "Apellido1 Apellido2"
+        controller.params.tipo = "socio"
+        controller.params.email = "usuario2@gmail.com"
+        controller.save()
+        assertEquals "show", redirectArgs.action
         assertEquals 2, Usuario.count()
     }
   

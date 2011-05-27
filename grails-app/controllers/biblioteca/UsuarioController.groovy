@@ -30,7 +30,9 @@ class UsuarioController {
     def save = {
         def usuarioInstance = new Usuario(params)
         if (usuarioInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
+            flash.message = "usuario.created.message"
+            flash.args = [usuarioInstance.nombre, usuarioInstance.apellidos]
+            flash.defaultMsg = "Usuario creado correctamente"
             redirect(action: "show", id: usuarioInstance.id)
         }
         else {
