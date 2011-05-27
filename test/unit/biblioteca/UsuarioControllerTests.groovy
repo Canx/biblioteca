@@ -39,4 +39,33 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
         assertEquals "login", controller.redirectArgs["action"]
 
     }
+
+    // TODO
+    void testSaveUser() {
+        mockSession.usuario = usuario1
+        mockParams.login = "usuario2"
+        mockParams.password = "passpass"
+        mockParams.nombre = "Usuario 2"
+        mockParams.apellidos = "Apellido1 Apellido2"
+        mockParams.tipo = "socio"
+        mockParams.email = "usuario2@gmail.com"
+        controller.save
+        assertEquals "create", renderArgs["view"]
+        assertEquals 2, Usuario.count()
+    }
+  
+    // TODO
+    void testListUsers() {
+        
+    }
+
+    // TODO
+    void testUpdateUser() {
+
+    }
+
+    // TODO
+    void testDeleteUser() {
+
+    }
 }

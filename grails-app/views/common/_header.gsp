@@ -3,7 +3,7 @@
     <g:if test="${session.usuario}">
       <g:link controller="usuario" action="edit" id="${session.usuario?.id}">
       <b>${session.usuario?.nombre} ${session.usuario?.apellidos} (${session.usuario?.tipo})</b>
-      </g:link> | <a href="javascript:void(0)" id="logout">Logout</a>
+      </g:link> | <a href="javascript:void(0)" id="logout"><g:message code="encabezado.logout"/></a>
       <gui:dialog
         id="confirmLogout"
         title="Logout"
@@ -22,7 +22,7 @@
     </g:if>
 
     <g:else>
-      <g:link controller="usuario" action="login">Login</g:link>
+      <g:link controller="usuario" action="login"><g:message code="encabezado.login"/></g:link>
     </g:else>
   </nobr>
 </div>

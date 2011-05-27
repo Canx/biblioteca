@@ -74,7 +74,10 @@ class UsuarioController {
             }
             usuarioInstance.properties = params
             if (!usuarioInstance.hasErrors() && usuarioInstance.save(flush: true)) {
-                flash.message = "${message(code: 'default.updated.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
+                //flash.message = "${message(code: 'default.updated.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
+                flash.message = "usuario.updated.message"
+                flash.args = [usuarioInstance.nombre, usuarioInstance.apellidos]
+                flash.defaultMsg = "Usuario modificado correctamente"
                 redirect(action: "show", id: usuarioInstance.id)
             }
             else {
