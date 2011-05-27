@@ -37,7 +37,7 @@
                     <g:each in="${usuarioInstanceList}" status="i" var="usuarioInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}"
 onclick="location.href='${createLink(action: 'show', id:usuarioInstance.id)}'">
-                            <td>${fieldValue(bean: usuarioInstance, field: "login")}</td>
+                            <td><a href="${createLink(action: 'show', id:usuarioInstance.id)}">${fieldValue(bean: usuarioInstance, field: "login")}</a></td>
                             <td>${fieldValue(bean: usuarioInstance, field: "nombre")}</td>
                             <td>${fieldValue(bean: usuarioInstance, field: "apellidos")}</td>
                             <td>${fieldValue(bean: usuarioInstance, field: "tipo")}</td>
