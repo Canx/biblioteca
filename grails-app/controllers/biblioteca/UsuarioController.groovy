@@ -32,7 +32,6 @@ class UsuarioController {
         if (usuarioInstance.save(flush: true)) {
             flash.message = "usuario.created.message"
             flash.args = [usuarioInstance.nombre, usuarioInstance.apellidos]
-            flash.defaultMsg = "Usuario creado correctamente"
             redirect(action: "show", id: usuarioInstance.id)
         }
         else {
@@ -43,7 +42,8 @@ class UsuarioController {
     def show = {
         def usuarioInstance = Usuario.get(params.id)
         if (!usuarioInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])}"
+            flash.message = "usuario.not.found.message"
+            flash.args = [params.id]
             redirect(action: "list")
         }
         else {
@@ -97,7 +97,10 @@ class UsuarioController {
         if (usuarioInstance) {
             try {
                 usuarioInstance.delete(flush: true)
-                flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])}"
+                //flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])}"
+                flash.message = "usuario.deleted.message"
+                flash.args = [usuarioInstance.nombre, usuarioInstance.apellidos]
+                flash.defaultMsg = "Usuario borrado correctamente"
                 redirect(action: "list")
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {

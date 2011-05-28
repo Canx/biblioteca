@@ -7,7 +7,7 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
 
     protected void setUp() {
         super.setUp()
-        usuario1 = new Usuario(login:"canchete",password:"holahola",nombre:"Ruben",apellidos:"Cancho Gasulla",tipo:"administrador")
+        usuario1 = new Usuario(login:"canchete",password:"holahola",nombre:"Ruben",apellidos:"Cancho Gasulla",email:"ruben@gmail.com",tipo:"administrador")
         mockDomain(Usuario, [usuario1])
     }
 
@@ -40,7 +40,6 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
 
     }
 
-    // TODO
     void testSaveUser() {
         mockSession.usuario = usuario1
         controller.params.login = "usuario2"
@@ -53,19 +52,31 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
         assertEquals "show", redirectArgs.action
         assertEquals 2, Usuario.count()
     }
-  
-    // TODO
-    void testListUsers() {
-        
+
+    void testListUser() {
+        controller.params.id = 1
+        def returnMap = controller.show()
+        assertEquals returnMap.usuarioInstance, usuario1
     }
 
-    // TODO
+    void testListUserFailure() {
+        controller.params.id = 2
+        controller.show()
+        assertEquals controller.flash.message, "usuario.not.found.message" 
+    }
+
     void testUpdateUser() {
-
+      controller.params.id = 1
+      controller.show()
+      controller.params.email = "otro@gmail.com"
+      controller.update()
+      assertEquals "otro@gmail.com", Usuario.get(1).email
     }
 
-    // TODO
     void testDeleteUser() {
-
+      mockSession.usuario = usuario1
+      controller.params.id = 1
+      controller.delete()
+      assertEquals 0, Usuario.count()
     }
 }
