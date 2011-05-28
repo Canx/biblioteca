@@ -46,7 +46,7 @@ class UsuarioWebTests extends grails.util.WebTest {
             showFirstElementDetails()
             clickButton 'Delete'
             verifyXPath xpath: "//div[@class='message']",
-                        text: /.*Usuario.*deleted.*/,
+                        text: /usuario.deleted.message/,
                         regex: true
             }
 
