@@ -54,7 +54,8 @@ class UsuarioController {
     def edit = {
         def usuarioInstance = Usuario.get(params.id)
         if (!usuarioInstance) {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])}"
+            flash.message = "usuario.not.found.message"
+            flash.args = [params.id]
             redirect(action: "list")
         }
         else {
@@ -76,10 +77,8 @@ class UsuarioController {
             }
             usuarioInstance.properties = params
             if (!usuarioInstance.hasErrors() && usuarioInstance.save(flush: true)) {
-                //flash.message = "${message(code: 'default.updated.message', args: [message(code: 'usuario.label', default: 'Usuario'), usuarioInstance.id])}"
                 flash.message = "usuario.updated.message"
                 flash.args = [usuarioInstance.nombre, usuarioInstance.apellidos]
-                flash.defaultMsg = "Usuario modificado correctamente"
                 redirect(action: "show", id: usuarioInstance.id)
             }
             else {
@@ -87,7 +86,8 @@ class UsuarioController {
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])}"
+            flash.message = "usuario.not.found.message"
+            flash.args = [params.id]
             redirect(action: "list")
         }
     }
@@ -97,19 +97,19 @@ class UsuarioController {
         if (usuarioInstance) {
             try {
                 usuarioInstance.delete(flush: true)
-                //flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])}"
                 flash.message = "usuario.deleted.message"
                 flash.args = [usuarioInstance.nombre, usuarioInstance.apellidos]
-                flash.defaultMsg = "Usuario borrado correctamente"
                 redirect(action: "list")
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
-                flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])}"
+                flash.message = "usuario.not.deleted.message"
+                flash.args = [usuarioInstance.nombre, usuarioInstance.apellidos]
                 redirect(action: "show", id: params.id)
             }
         }
         else {
-            flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'usuario.label', default: 'Usuario'), params.id])}"
+            flash.message = "usuario.not.found.message"
+            flash.args = [params.id]
             redirect(action: "list")
         }
     }
@@ -119,7 +119,8 @@ class UsuarioController {
     def handleLogin = {
       def usuario = Usuario.findByLogin(params.login)
       if (!usuario) {
-        flash.message = "El usuario ${params.login} no existe"
+        flash.message = "usuario.not.found.message"
+        flash.args = [params.login]
         redirect(controller: 'usuario', action:'login')
         return
       }

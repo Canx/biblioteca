@@ -28,7 +28,7 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
         mockParams.password = "passwordmalo"
         controller.handleLogin()
         assertNull controller.session.usuario
-        assertEquals mockFlash.message, "El usuario ${controller.params.login} no existe"
+        assertEquals mockFlash.message, "usuario.not.found.message"
     }
 
     void testLogout() {
@@ -53,13 +53,13 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
         assertEquals 2, Usuario.count()
     }
 
-    void testListUser() {
+    void testShowUser() {
         controller.params.id = 1
         def returnMap = controller.show()
         assertEquals returnMap.usuarioInstance, usuario1
     }
 
-    void testListUserFailure() {
+    void testShowUserFailure() {
         controller.params.id = 2
         controller.show()
         assertEquals controller.flash.message, "usuario.not.found.message" 
