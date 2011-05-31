@@ -42,7 +42,7 @@ title="${message(code: 'libro.fecha.label', default: 'Fecha')}" />
                     <g:each in="${libroInstanceList}" status="i" var="libroInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}"
 onclick="location.href='${createLink(action: 'show', id: libroInstance.id)}'">
-                            <td>${fieldValue(bean: libroInstance, field: "isbn")}</td>
+                            <td><a href="${createLink(action: 'show', id: libroInstance.id)}">${fieldValue(bean: libroInstance, field: "isbn")}</a></td>
                             <td>${fieldValue(bean: libroInstance, field: "titulo")}</td>
                             <td>${fieldValue(bean: libroInstance, field: "autor")}</td>
                             <td>${fieldValue(bean: libroInstance, field: "editorial")}</td>

@@ -9,7 +9,7 @@ class LibroWebTests extends grails.util.WebTest {
        clickButton "Login"
        clickLink "Libros"
        clickLink "New Libro"
-       verifyText(description: "Verify that text is contained in the page", "Solo los bibliotecarios pueden cambiar la información de los libros.")
+       verifyText(description: "Verify that text is contained in the page", "Solo los bibliotecarios pueden cambiar la información de los libros")
     }
 
     void testLibroCreateOk() {
@@ -30,5 +30,18 @@ class LibroWebTests extends grails.util.WebTest {
         setInputField(name: "descripcion", value: "Habla de que hay que indignarse")
         clickButton "Create"
         verifyText(description: "Verify that text is contained in the page", "Libro 5 created")
+    }
+
+    void testLibroUpdateOk() {
+        invoke "http://localhost:8080/biblioteca/"
+        clickLink "Login"
+        setSelectField(name: "login", text: "pablomarmol")
+        clickButton "Login"
+        clickLink "Libros"
+        clickLink "843992688X"
+        clickButton "Edit"
+        setInputField(name: "descripcion", value: "Un libro muy bonito")
+        clickButton "Update"
+        verifyText(description: "Verify that text is contained in the page", "Libro 1 updated")
     }
 }
