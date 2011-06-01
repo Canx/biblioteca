@@ -3,13 +3,14 @@ package biblioteca
 import grails.test.*
 
 class MultaTests extends GrailsUnitTestCase {
+    def bibliotecario, profesor, socio
     protected void setUp() {
         super.setUp()
-        mockDomain(Libro, [new Libro(titulo:'La colmena', anyo:1951, autor:'Camilo José Cela Trulock', isbn:'843992688X', editorial:'Anaya', fecha:new Date(), descripcion:'')] )
-        mockDomain(Usuario, [new Usuario(login:"canchete",password:"holahola",nombre:"Ruben",apellidos:"Cancho Gasulla",tipo:"administrador")] )
-        mockDomain(Operacion, [new Operacion(tipo:'prestamo', estado: true, fechaInicio: Date.parse("dd/MM/yyyy","01/01/2011"), fechaFin: Date.parse("dd/MM/yyyy","01/06/2011"), usuario:Usuario.get(1), libro:Libro.get(1))] )
-        mockDate = new MockFor(Date.class)
-        mockDate.Date() { new Date().parse("dd/MM/yyyy","01/01/2012" }
+        bibliotecario = new Usuario(login:"canchete",password:"holahola",nombre:"Ruben",apellidos:"Cancho Gasulla",tipo:"bibliotecario")
+        profesor = new Usuario(login:"antonio", password:"holahola",nombre:"Antonio", apellidos:"Machado", tipo:"profesor")
+        socio = new Usuario(login:"juan", password:"holahola", nombre:"Juan", apellidos:"Perez Perez", tipo: "socio")
+        mockDomain(Usuario, [bibliotecario, profesor, socio])
+        mockDomain(Multa)
     }
 
     protected void tearDown() {
@@ -17,6 +18,19 @@ class MultaTests extends GrailsUnitTestCase {
     }
 
     void testCrearMultaOk() {
-      // TODO: al devolver el libro se tiene que generar la multa
+      def multa = new Multa(usuario:socio, descripcion:"No ha devuelto los libros a tiempo", fecha_inicio: new Date(), fecha_fin: new Date()+30)
+      assertTrue multa.validate()
+      multa.save()
+      assertEquals 1, Multa.count()
+      def multa2 = new Multa(usuario:bibliotecario, descripcion:"No ha devuelto los libros a tiempo", fecha_inicio: new Date(), fecha_fin: new Date()+30)
+      assertTrue multa2.validate()
+      multa2.save()
+      assertEquals 2, Multa.count()
     }
+
+    void testCrearMultaBibliotecarioFailure() {
+      def multa = new Multa(usuario:bibliotecario, descripcion:"No ha devuelto los libros a tiempo", fecha_inicio: new Date(), fecha_fin: new Date()+30)
+      assertFalse multa.validate()
+    }
+
 }
