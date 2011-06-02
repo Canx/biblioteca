@@ -22,20 +22,16 @@
                     <thead>
                         <tr>
                             <g:sortableColumn property="isbn" title="${message(code: 'libro.isbn.label', default: 'Isbn')}" />
-                        
                             <g:sortableColumn property="titulo" title="${message(code: 'libro.titulo.label', default: 'Titulo')}" />
-                        
                             <g:sortableColumn property="autor" title="${message(code: 'libro.autor.label', default: 'Autor')}" />
-                        
                             <g:sortableColumn property="editorial" title="${message(code: 'libro.editorial.label', default: 'Editorial')}" />
-                        
                             <g:sortableColumn property="anyo" title="${message(code: 'libro.anyo.label', default: 'Anyo')}" />
                             <g:sortableColumn property="descripcion"
 title="${message(code: 'libro.descripcion.label', default:
 'Descripción')}" />
                             <g:sortableColumn property="fecha"
 title="${message(code: 'libro.fecha.label', default: 'Fecha')}" />
-                        
+                            <th>Operaciones</th>
                         </tr>
                     </thead>
                     <tbody>

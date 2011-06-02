@@ -36,7 +36,7 @@
                                   <label for="usuario"><g:message code="multa.usuario.label" default="Usuario" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: multaInstance, field: 'usuario', 'errors')}">
-                                    <g:select name="usuario.id" from="${biblioteca.Usuario.list()}" optionKey="id" value="${multaInstance?.usuario?.id}"  />
+                                    <g:select name="usuario.id" from="${biblioteca.Usuario.findAllByTipoOrTipo('profesor','socio')}" optionKey="id" value="${multaInstance?.usuario?.id}"  />
                                 </td>
                             </tr>
                         
