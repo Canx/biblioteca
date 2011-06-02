@@ -19,9 +19,15 @@
             <div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${usuarioInstance}">
-            <div class="errors">
-                <g:renderErrors bean="${usuarioInstance}" as="list" />
-            </div>
+                <div class="errors">
+                    <g:set var="primerError" value="${true}" />
+                        <g:eachError bean="${usuarioInstance}">
+                            <g:if test="${primerError}">
+                                <g:message error="${it}" />
+                            </g:if>
+                            <g:set var="primerError" value="${false}" />
+                    </g:eachError>
+                </div>
             </g:hasErrors>
             <g:form action="save" >
                 <div class="dialog">
