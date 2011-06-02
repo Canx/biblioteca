@@ -22,13 +22,16 @@ class OperacionController {
         redirect(action: "list", params: params)
     }
 
-    def list = {
+    def list = { 
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 
         if (params.id == null)
           [operacionInstanceList: Operacion.list(params), operacionInstanceTotal: Operacion.count()]
         else
-          [operacionInstanceList: Usuario.findById(params.id).operaciones.list()]
+          [operacionInstanceList:
+           Operacion.findAllWhere(usuario: Usuario.findById(params.id)),
+           operacionInstanceTotal:
+           Operacion.findAllWhere(usuario: Usuario.findById(params.id)).size()]
     }
 
     def create = {

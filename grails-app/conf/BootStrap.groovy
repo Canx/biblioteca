@@ -10,21 +10,21 @@ class BootStrap {
                 tipo: 'administrador',
                 email: 'fran@gmail.com'
                ).save()
-    new Usuario(login: "pablomarmol",
+    def u2 = new Usuario(login: "pablomarmol",
                 password: "marmol",
                 nombre: "Pablo",
                 apellidos:'Mar Mol',
                 tipo: "bibliotecario",
                 email: "marmol@gmail.com"
               ).save()
-    new Usuario(login: "pedropp",
+    def profesor = new Usuario(login: "pedropp",
                 password:"picapiedra",
                 nombre:"Roberto",
                 apellidos:"Pica Piedra",
                 tipo:"profesor",
                 email:"pedropp@gmail.com"
                 ).save()
-    new Usuario(login:'wilmapp',
+    def socio = new Usuario(login:'wilmapp',
                 password:'picapiedra2',
                 nombre:'Wilma',
                 apellidos:'Pica Piedra',
@@ -65,14 +65,16 @@ class BootStrap {
               fecha:new Date(),
               descripcion:''
               ).save()
-    new Operacion(
+    def op1 = new Operacion(
               tipo:'prestamo',
               estado:true,
               fechaInicio:Date.parse("dd/MM/yyyy","12/01/2011"),
               fechaFin:Date.parse("dd/MM/yyyy","10/6/2011"),
-              usuario: u1,
+              usuario: socio,
               libro: l1
               ).save()
+
+    socio.addToOperaciones(op1).save()
   }
   def destroy = {}
 }

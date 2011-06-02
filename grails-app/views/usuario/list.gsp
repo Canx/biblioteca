@@ -39,7 +39,7 @@ onclick="location.href='${createLink(action: 'show', id:usuarioInstance.id)}'">
                             <td>${fieldValue(bean: usuarioInstance, field: "tipo")}</td>
                             <td>${fieldValue(bean: usuarioInstance, field: "email")}</td>
                             <g:if test="${(usuarioInstance.tipo == 'socio') || (usuarioInstance.tipo == 'profesor')}">
-                              <td>Enlace a listado de operaciones</td>
+                              <td><a href="${createLink(controller:'operacion',action:'list',id:usuarioInstance.id)}">operaciones</a></td>
                             </g:if>
                         </tr>
                     </g:each>
