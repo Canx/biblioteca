@@ -25,13 +25,18 @@ class OperacionController {
     def list = { 
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 
-        if (params.id == null)
-          [operacionInstanceList: Operacion.list(params), operacionInstanceTotal: Operacion.count()]
-        else
+        if (params.usuarioId != null)
           [operacionInstanceList:
-           Operacion.findAllWhere(usuario: Usuario.findById(params.id)),
+           Operacion.findAllWhere(usuario: Usuario.findById(params.usuarioId)),
            operacionInstanceTotal:
-           Operacion.findAllWhere(usuario: Usuario.findById(params.id)).size()]
+           Operacion.findAllWhere(usuario: Usuario.findById(params.usuarioId)).size()]
+        else if (params.libroId != null)
+          [operacionInstanceList:
+           Operacion.findAllWhere(libro: Libro.findById(params.libroId)),
+           operacionInstanceTotal:
+           Operacion.findAllWhere(libro: Libro.findById(params.libroId)).size()]
+        else
+          [operacionInstanceList: Operacion.list(params), operacionInstanceTotal: Operacion.count()]
     }
 
     def create = {

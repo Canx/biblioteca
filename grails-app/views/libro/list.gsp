@@ -47,6 +47,9 @@ onclick="location.href='${createLink(action: 'show', id: libroInstance.id)}'">
 "descripcion")}</td>
                             <td><g:formatDate format="dd/MM/yyyy" date="${fieldValue(bean:
 libroInstance, field: "fecha")}" /></td>
+                            <td>
+                              <a href="<g:createLink controller="operacion" action="list" params="[libroId:libroInstance.id]" />">operaciones</a>
+                            </td>
                         </tr>
                     </g:each>
                     </tbody>
