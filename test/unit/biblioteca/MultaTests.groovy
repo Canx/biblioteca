@@ -17,15 +17,18 @@ class MultaTests extends GrailsUnitTestCase {
         super.tearDown()
     }
 
-    void testCrearMultaOk() {
+    void testCrearMultaSocioOk() {
       def multa = new Multa(usuario:socio, descripcion:"No ha devuelto los libros a tiempo", fecha_inicio: new Date(), fecha_fin: new Date()+30)
       assertTrue multa.validate()
       multa.save()
       assertEquals 1, Multa.count()
-      def multa2 = new Multa(usuario:bibliotecario, descripcion:"No ha devuelto los libros a tiempo", fecha_inicio: new Date(), fecha_fin: new Date()+30)
-      assertTrue multa2.validate()
-      multa2.save()
-      assertEquals 2, Multa.count()
+    }
+
+    void testCrearMultaProfesorOk() {
+      def multa = new Multa(usuario:profesor, descripcion:"No ha devuelto los libros a tiempo", fecha_inicio: new Date(), fecha_fin: new Date()+30)
+      assertTrue multa.validate()
+      multa.save()
+      assertEquals 1, Multa.count()
     }
 
     void testCrearMultaBibliotecarioFailure() {
@@ -33,4 +36,8 @@ class MultaTests extends GrailsUnitTestCase {
       assertFalse multa.validate()
     }
 
+    void testCrearMultaFechaFinFailure() {
+      def multa = new Multa(usuario:socio, descripcion:"No ha devuelto los libros a tiempo", fecha_inicio: new Date(), fecha_fin: new Date()-20)
+      assertFalse multa.validate()
+    }
 }

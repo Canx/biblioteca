@@ -8,6 +8,7 @@ class Multa {
 
     static constraints = {
       usuario(validator: { return ((it?.tipo == "socio") || (it?.tipo == "profesor")) ? true : false })
+      fecha_fin(validator: { date -> return (date >= new Date()) ? true : false })
     }
 
     // def beforeInsert() {}
