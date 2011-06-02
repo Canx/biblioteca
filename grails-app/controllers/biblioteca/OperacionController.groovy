@@ -24,7 +24,11 @@ class OperacionController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [operacionInstanceList: Operacion.list(params), operacionInstanceTotal: Operacion.count()]
+
+        if (params.id == null)
+          [operacionInstanceList: Operacion.list(params), operacionInstanceTotal: Operacion.count()]
+        else
+          [operacionInstanceList: Usuario.findById(params.id).operaciones.list()]
     }
 
     def create = {

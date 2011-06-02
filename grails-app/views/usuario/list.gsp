@@ -22,15 +22,11 @@
                     <thead>
                         <tr>
                             <g:sortableColumn property="login" title="${message(code: 'usuario.login.label', default: 'Login')}" />
-                        
                             <g:sortableColumn property="nombre" title="${message(code: 'usuario.nombre.label', default: 'Nombre')}" />
-                        
                             <g:sortableColumn property="apellidos" title="${message(code: 'usuario.apellidos.label', default: 'Apellidos')}" />
-                        
                             <g:sortableColumn property="tipo" title="${message(code: 'usuario.tipo.label', default: 'Tipo')}" />
-
                             <g:sortableColumn property="email" title="${message(code: 'usuario.email.label', default: 'Email')}" />
-                        
+                            <th>Operaciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,6 +38,9 @@ onclick="location.href='${createLink(action: 'show', id:usuarioInstance.id)}'">
                             <td>${fieldValue(bean: usuarioInstance, field: "apellidos")}</td>
                             <td>${fieldValue(bean: usuarioInstance, field: "tipo")}</td>
                             <td>${fieldValue(bean: usuarioInstance, field: "email")}</td>
+                            <g:if test="${(usuarioInstance.tipo == 'socio') || (usuarioInstance.tipo == 'profesor')}">
+                              <td>Enlace a listado de operaciones</td>
+                            </g:if>
                         </tr>
                     </g:each>
                     </tbody>
