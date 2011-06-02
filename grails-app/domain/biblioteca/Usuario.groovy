@@ -8,7 +8,7 @@ class Usuario {
   String tipo
   String email
 
-  static hasMany = [operaciones:Operacion]
+  static hasMany = [operaciones:Operacion, multas:Multa]
 
   static constraints = {
     login(size:6..20, blank:false, unique:true)

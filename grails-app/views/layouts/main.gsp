@@ -22,6 +22,7 @@
           <g:link class="menuitem" controller="libro">Libros</g:link>
           <g:link class="menuitem" controller="usuario">Usuarios</g:link>
           <g:link class="menuitem" controller="operacion">Operaciones</g:link>
+          <g:link class="menuitem" controller="multa">Multas</g:link>
         </div>
         <div id="content">
           <g:layoutBody />
