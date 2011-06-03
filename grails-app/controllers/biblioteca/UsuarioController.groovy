@@ -1,6 +1,7 @@
 package biblioteca
 
 class UsuarioController {
+    def usuarioService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -28,8 +29,8 @@ class UsuarioController {
     }
 
     def save = {
-        def usuarioInstance = new Usuario(params)
-        if (usuarioInstance.save(flush: true)) {
+        def usuarioInstance = usuarioService.altaUsuario(params)
+        if (!usuarioInstance.hasErrors()) {
             flash.message = "usuario.created.message"
             flash.args = [usuarioInstance.nombre, usuarioInstance.apellidos]
             redirect(action: "show", id: usuarioInstance.id)
