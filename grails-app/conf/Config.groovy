@@ -74,12 +74,14 @@ log4j = {
 
     root {
         info 'file'
+        trace 'file'
+        warn 'file'
         additivity = true
     }
 
-    trace "grails.app.controller.biblioteca.UsuarioController"
-    trace "grails.app.controller.biblioteca.LibroController"
-    trace "grails.app.controller.biblioteca.OperacionController"
+    warn "grails.app"
+    trace "grails.app.controller"
+    trace "grails.app.service"
 
     error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
            'org.codehaus.groovy.grails.web.pages', //  GSP
@@ -94,4 +96,18 @@ log4j = {
            'net.sf.ehcache.hibernate'
 
     warn   'org.mortbay.log'
+}
+
+// Mail
+grails {
+    mail {
+        host = "smtp.gmail.com"
+        port = 465 
+        username = ""
+        password = ""
+        props = [ "mail.smtp.auth":"true",
+        "mail.smtp.socketFactory.port":"465",
+        "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+        "mail.smtp.socketFactory.fallback":"false" ]
+    }
 }

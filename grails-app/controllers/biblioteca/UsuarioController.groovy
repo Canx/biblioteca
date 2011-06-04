@@ -1,7 +1,7 @@
 package biblioteca
 
 class UsuarioController {
-    def usuarioService
+    def usuarioService, notificadorService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -136,5 +136,10 @@ class UsuarioController {
         session.usuario = null
         redirect(controller: 'usuario', action:'login')
       }
+    }
+
+    def mandarMails = {
+        notificadorService.mandarMails("canchete@gmail.com", "hola!", "Esto es una prueba")
+        render "El email ha sido enviado correctamente"
     }
 }
