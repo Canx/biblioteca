@@ -1,10 +1,10 @@
 import biblioteca.*
-
 class BootStrap {
 
+  def pass = "password"
   def init = { servletContext ->
     def u1 = new Usuario(login: 'frangarcia', 
-                password: 'mipassword',
+                password: pass,
                 nombre:'Francisco José',
                 apellidos:'García Rico',
                 tipo: 'administrador',
@@ -12,7 +12,7 @@ class BootStrap {
                 activo: true
                ).save()
     def u2 = new Usuario(login: "pablomarmol",
-                password: "marmol",
+                password: pass,
                 nombre: "Pablo",
                 apellidos:'Mar Mol',
                 tipo: "bibliotecario",
@@ -20,7 +20,7 @@ class BootStrap {
                 activo: true
               ).save()
     def profesor = new Usuario(login: "pedropp",
-                password:"picapiedra",
+                password: pass,
                 nombre:"Roberto",
                 apellidos:"Pica Piedra",
                 tipo:"profesor",
@@ -28,7 +28,7 @@ class BootStrap {
                 activo:true
                 ).save()
     def socio = new Usuario(login:'wilmapp',
-                password:'picapiedra2',
+                password: pass,
                 nombre:'Wilma',
                 apellidos:'Pica Piedra',
                 tipo:"socio",

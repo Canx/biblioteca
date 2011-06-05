@@ -1,7 +1,10 @@
 package biblioteca
 
+import org.apache.commons.codec.digest.DigestUtils
+
+
 class UsuarioController {
-    def usuarioService, notificadorService
+    def usuarioService, notificadorService, jcaptchaService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -29,6 +32,7 @@ class UsuarioController {
     }
 
     def save = {
+        //params.password = DigestUtils.md5Hex(params.password)
         def usuarioInstance = usuarioService.altaUsuario(params)
         if (!usuarioInstance.hasErrors()) {
             def url_activacion = createLink(controller:"usuario", action: "activarUsuario", id:usuarioInstance.id, absolute:true).toString()
@@ -67,6 +71,7 @@ class UsuarioController {
     }
 
     def update = {
+        //params.password = DigestUtils.md5Hex(params.password)
         def usuarioInstance = Usuario.get(params.id)
         if (usuarioInstance) {
             if (params.version) {
@@ -161,5 +166,40 @@ class UsuarioController {
        else {
            render "El usuario no existe"
        }
+    }
+
+    def register = {
+        def usuarioInstance = new Usuario()
+        usuarioInstance.properties = params
+        return ['usuarioInstance':usuarioInstance]
+    }
+
+    def handleRegister = {
+        def usuarioInstance = new Usuario()
+        // proceso el captcha
+        if (!jcaptchaService.validateResponse("image", session.id, params.responseCaptcha)) {
+            flash.message = "El captcha no es correcto"
+            redirect(controller: 'usuario', action: 'register')
+        }
+        else {
+            // Compruebo la confirmación de la contraseña
+            if (params.password != params.confirm) {
+                flash.message = "La confirmación de la contraseña no coincide con la contraseña"
+                redirect(action:register)
+            }
+            else {
+                //params.password = DigestUtils.md5Hex(params.password)
+                params.tipo = "socio"
+                usuarioInstance = usuarioService.altaUsuario(params)
+                if (!usuarioInstance.hasErrors()) {
+                    //session.usuario = usuarioInstance
+                    flash.message = "usuario.email.sent.message"
+                    redirect(controller:'usuario',action:'login')
+                }
+                else {
+                    render(view:'register', model:[usuarioInstance:usuarioInstance])
+                }
+            }
+        }
     }
 }

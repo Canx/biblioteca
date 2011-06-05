@@ -22,7 +22,8 @@
     </g:if>
 
     <g:else>
-      <g:link controller="usuario" action="login"><g:message code="encabezado.login"/></g:link>
+      <g:link controller="usuario" action="login"><g:message code="encabezado.login"/></g:link> |
+      <g:link controller="usuario" action="register">Registrarse</g:link>
     </g:else>
   </nobr>
 </div>
