@@ -3,7 +3,6 @@ package biblioteca
 import grails.test.*
 
 class UsuarioServiceTests extends GrailsUnitTestCase {
-
     protected void setUp() {
         super.setUp()
     }
@@ -12,6 +11,6 @@ class UsuarioServiceTests extends GrailsUnitTestCase {
         super.tearDown()
     }
 
-    void testSomething() {
+    void testEnviarEmailRegistro() {
     }
 }

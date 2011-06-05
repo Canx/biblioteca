@@ -24,6 +24,7 @@ class UsuarioService {
         return u
     }
 
+    // TODO: controlar excepciones
     def enviarEmailRegistro(usuario, url_activacion) {
         log.trace("url activacion: ${url_activacion}")
         contenido = plantilla.replaceAll(/\[activa_url\]/, url_activacion)

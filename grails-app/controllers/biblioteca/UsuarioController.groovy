@@ -124,20 +124,24 @@ class UsuarioController {
         if (!usuario) {
             flash.message = "usuario.not.found.message"
             flash.args = [params.login]
-            redirect(controller: 'usuario', action:'login')
-            return
         }
         else {
-            if (usuario.activo) {
-                session.usuario = usuario
-                redirect(controller:'operacion')
+            if (usuario.password == params.password) {
+                if (usuario.activo) {
+                    session.usuario = usuario
+                    redirect(controller:'operacion')
+                    return
+                }
+                else {
+                    flash.message = "usuario.not.active.message"
+                    flash.args = [params.login]
+                }
             }
             else {
-                flash.message = "usuario.not.active.message"
-                flash.args = [params.login]
-                redirect(controller: 'usuario', action: 'login')
+                flash.message = "usuario.password.error.message"
             }
         }
+        redirect(controller: 'usuario', action:'login')
     }
 
     def logout = {

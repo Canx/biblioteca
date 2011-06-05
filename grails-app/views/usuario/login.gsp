@@ -16,13 +16,13 @@
       <p>Bienvenido a la aplicación Biblioteca. Por favor, identifícate.
       </p>
       <form>
-        <span class="nameClear">
-          <label for="login">
-            Selecciona el usuario:
-          </label>
-        </span>
-        <g:select name="login" from="${Usuario.list()}" optionKey="login" optionValue="login"></g:select>
-        <br/>
+          <label for="login">Nombre de usuario</label><br/>
+            <input type="text" maxlength="20" id="login" name="login"
+             value="${fieldValue(bean:usuarioInstance, field:'login')}"/>
+          <br/>
+          <label for="password">Contraseña</label><br/>
+            <input type="password" maxlength="20" id="password" name="password"/>
+          <br/> 
         <div class="buttons">
           <span class="button"><g:actionSubmit value="Login" action="handleLogin"/></span>
         </div>
