@@ -9,7 +9,7 @@ class UsuarioTests extends GrailsUnitTestCase {
       super.setUp()
       mockDomain(Usuario)
       mockForConstraintsTests(Usuario)
-      usuario1 = new Usuario(login:"canchete",password:"holahola",nombre:"Ruben",apellidos:"Cancho Gasulla",tipo:"administrador")
+      usuario1 = new Usuario(login:"canchete",password:"holahola",nombre:"Ruben",apellidos:"Cancho Gasulla",tipo:"administrador", activo:false)
     }
 
     protected void tearDown() {

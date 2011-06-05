@@ -6,12 +6,13 @@ class NotificadorService {
 
     def mailService
 
-    def mandarMails(email, titulo, contenido) {
+    def mandarEmail(email, titulo, contenido) {
         mailService.sendMail {
             to email
             from "informaticateacher@gmail.com"
             subject titulo
             body contenido
         }
+        log.trace("email a ${email} enviado.")
     }
 }

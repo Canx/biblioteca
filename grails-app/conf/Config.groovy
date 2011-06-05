@@ -70,12 +70,14 @@ log4j = {
 
     appenders {
         file name:'file', file:'mylog.log'
+        file name:'error_file', file:'error.log'
     }
 
     root {
         info 'file'
         trace 'file'
         warn 'file'
+        error 'error_file'
         additivity = true
     }
 

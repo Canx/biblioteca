@@ -31,8 +31,10 @@ class UsuarioController {
     def save = {
         def usuarioInstance = usuarioService.altaUsuario(params)
         if (!usuarioInstance.hasErrors()) {
+            def url_activacion = createLink(controller:"usuario", action: "activarUsuario", id:usuarioInstance.id, absolute:true).toString()
+            usuarioService.enviarEmailRegistro(usuarioInstance,url_activacion)
             flash.message = "usuario.created.message"
-            flash.args = [usuarioInstance.nombre, usuarioInstance.apellidos]
+            flash.args = [usuarioInstance.login]
             redirect(action: "show", id: usuarioInstance.id)
         }
         else {
@@ -118,17 +120,24 @@ class UsuarioController {
     def login = {}
 
     def handleLogin = {
-      def usuario = Usuario.findByLogin(params.login)
-      if (!usuario) {
-        flash.message = "usuario.not.found.message"
-        flash.args = [params.login]
-        redirect(controller: 'usuario', action:'login')
-        return
-      }
-      else {
-        session.usuario = usuario
-        redirect(controller:'operacion')
-      }
+        def usuario = Usuario.findByLogin(params.login)
+        if (!usuario) {
+            flash.message = "usuario.not.found.message"
+            flash.args = [params.login]
+            redirect(controller: 'usuario', action:'login')
+            return
+        }
+        else {
+            if (usuario.activo) {
+                session.usuario = usuario
+                redirect(controller:'operacion')
+            }
+            else {
+                flash.message = "usuario.not.active.message"
+                flash.args = [params.login]
+                redirect(controller: 'usuario', action: 'login')
+            }
+        }
     }
 
     def logout = {
@@ -138,8 +147,15 @@ class UsuarioController {
       }
     }
 
-    def mandarMails = {
-        notificadorService.mandarMails("canchete@gmail.com", "hola!", "Esto es una prueba")
-        render "El email ha sido enviado correctamente"
+    def activarUsuario = {
+       def usuario = Usuario.get(params.id)
+       if (usuario != null) {
+           usuario.activo = true
+           usuario.save()
+           render "El usuario ha sido activado correctamente"
+       }
+       else {
+           render "El usuario no existe"
+       }
     }
 }

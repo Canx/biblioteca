@@ -7,7 +7,7 @@ class UsuarioFilters {
             before = {
                     if ((session?.usuario?.id as String != params?.id) && 
                         (session?.usuario?.tipo != "administrador")) {
-                        flash.message = "Sólo puedes editar tu información"
+                        flash.message = "usuario.edit.error.message"
                         redirect(controller:'usuario', action: 'list')
                         return false
                     }
@@ -17,7 +17,7 @@ class UsuarioFilters {
         chequeoCreacionUsuario(controller: 'usuario', action: 'create|save') {
             before = {
                     if (session?.usuario?.tipo != "administrador") {
-                        flash.message = "Sólo los administradores pueden crear usuarios"
+                        flash.message = "usuario.create.error.message"
                         redirect(controller:'usuario', action: 'list')
                         return false
                     }

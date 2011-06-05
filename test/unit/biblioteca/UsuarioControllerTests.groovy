@@ -3,12 +3,13 @@ package biblioteca
 import grails.test.*
 
 class UsuarioControllerTests extends ControllerUnitTestCase {
-    def usuario1
+    def usuario1, usuario_no_activo
 
     protected void setUp() {
         super.setUp()
-        usuario1 = new Usuario(login:"canchete",password:"holahola",nombre:"Ruben",apellidos:"Cancho Gasulla",email:"ruben@gmail.com",tipo:"administrador")
-        mockDomain(Usuario, [usuario1])
+        usuario1 = new Usuario(login:"canchete",password:"holahola",nombre:"Ruben",apellidos:"Cancho Gasulla",email:"ruben@gmail.com",tipo:"administrador",activo:true)
+        usuario_no_activo = new Usuario(login:"canchete2",password:"holahola",nombre:"Ruben",apellidos:"Cancho Gasulla",email:"ruben2@gmail.com",tipo:"administrador",activo:false)
+        mockDomain(Usuario, [usuario1, usuario_no_activo])
     }
 
     protected void tearDown() {
@@ -23,12 +24,20 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
         assertEquals "operacion", controller.redirectArgs["controller"]
     }
 
-    void testHandleLoginFailure() {
+    void testHandleLoginNotFound() {
         mockParams.login = "loginmalo"
         mockParams.password = "passwordmalo"
         controller.handleLogin()
         assertNull controller.session.usuario
-        assertEquals mockFlash.message, "usuario.not.found.message"
+        assertEquals "usuario.not.found.message", mockFlash.message
+    }
+
+    void testHandleLoginNotActive() {
+        mockParams.login = usuario_no_activo.login
+        mockParams.password = usuario_no_activo.password
+        controller.handleLogin()
+        assertNull controller.session.usuario
+        assertEquals "usuario.not.active.message", mockFlash.message
     }
 
     void testLogout() {
@@ -37,20 +46,6 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
         assertNull controller.session.usuario
         assertEquals "usuario", controller.redirectArgs["controller"]
         assertEquals "login", controller.redirectArgs["action"]
-
-    }
-
-    void testSaveUser() {
-        mockSession.usuario = usuario1
-        controller.params.login = "usuario2"
-        controller.params.password = "passpass"
-        controller.params.nombre = "Usuario 2"
-        controller.params.apellidos = "Apellido1 Apellido2"
-        controller.params.tipo = "socio"
-        controller.params.email = "usuario2@gmail.com"
-        controller.save()
-        assertEquals "show", redirectArgs.action
-        assertEquals 2, Usuario.count()
     }
 
     void testShowUser() {
@@ -60,7 +55,7 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
     }
 
     void testShowUserFailure() {
-        controller.params.id = 2
+        controller.params.id = 1000
         controller.show()
         assertEquals controller.flash.message, "usuario.not.found.message" 
     }
@@ -75,8 +70,16 @@ class UsuarioControllerTests extends ControllerUnitTestCase {
 
     void testDeleteUser() {
       mockSession.usuario = usuario1
-      controller.params.id = 1
+      mockParams.id = 1
+      def total = Usuario.count()
       controller.delete()
-      assertEquals 0, Usuario.count()
+      assertEquals total-1, Usuario.count()
+    }
+
+    void testActivarUsuario() {
+      assertFalse usuario_no_activo.activo
+      mockParams.id = usuario_no_activo.id
+      controller.activarUsuario()
+      assertTrue usuario_no_activo.activo
     }
 }

@@ -8,28 +8,32 @@ class BootStrap {
                 nombre:'Francisco José',
                 apellidos:'García Rico',
                 tipo: 'administrador',
-                email: 'fran@gmail.com'
+                email: 'fran@gmail.com',
+                activo: true
                ).save()
     def u2 = new Usuario(login: "pablomarmol",
                 password: "marmol",
                 nombre: "Pablo",
                 apellidos:'Mar Mol',
                 tipo: "bibliotecario",
-                email: "marmol@gmail.com"
+                email: "marmol@gmail.com",
+                activo: true
               ).save()
     def profesor = new Usuario(login: "pedropp",
                 password:"picapiedra",
                 nombre:"Roberto",
                 apellidos:"Pica Piedra",
                 tipo:"profesor",
-                email:"pedropp@gmail.com"
+                email:"pedropp@gmail.com",
+                activo:true
                 ).save()
     def socio = new Usuario(login:'wilmapp',
                 password:'picapiedra2',
                 nombre:'Wilma',
                 apellidos:'Pica Piedra',
                 tipo:"socio",
-                email:"wilmapp@gmail.com"
+                email:"wilmapp@gmail.com",
+                activo:true
                ).save()
 
     def l1 = new Libro(titulo:'La colmena',

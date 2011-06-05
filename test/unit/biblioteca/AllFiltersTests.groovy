@@ -2,8 +2,7 @@ package biblioteca
 
 import grails.test.*
 
-class UsuarioServiceTests extends GrailsUnitTestCase {
-
+class AllFiltersTests extends GrailsUnitTestCase {
     protected void setUp() {
         super.setUp()
     }
@@ -13,5 +12,6 @@ class UsuarioServiceTests extends GrailsUnitTestCase {
     }
 
     void testSomething() {
+
     }
 }

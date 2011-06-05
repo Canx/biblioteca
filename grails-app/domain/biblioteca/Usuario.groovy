@@ -7,6 +7,7 @@ class Usuario {
   String apellidos
   String tipo
   String email
+  Boolean activo
 
   static hasMany = [operaciones:Operacion, multas:Multa]
 
