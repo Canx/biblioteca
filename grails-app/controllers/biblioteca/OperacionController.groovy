@@ -1,7 +1,7 @@
 package biblioteca
 
 class OperacionController {
-
+    def jcaptchaService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def beforeInterceptor = {
@@ -47,6 +47,11 @@ class OperacionController {
 
     def save = {
         def operacionInstance = new Operacion(params)
+        if (!jcaptchaService.validateResponse("image", session.id, params.responseCaptcha)) {
+            flash.message = "El captcha no es correcto"
+            render(view: 'create', model: [operacionInstance: operacionInstance])
+            return
+        }
         if (operacionInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'operacion.label', default: 'Operacion'), operacionInstance.id])}"
             redirect(action: "show", id: operacionInstance.id)

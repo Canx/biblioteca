@@ -81,7 +81,15 @@
                                     <g:select name="usuario.id" from="${biblioteca.Usuario.list()}" optionKey="id" value="${operacionInstance?.usuario?.id}"  />
                                 </td>
                             </tr>
-                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="tipo">Captcha:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:operacionInstance,field:'responseCaptcha','errors')}">
+                                    <jcaptcha:jpeg name="image" /><br>
+                                    <g:textField name="responseCaptcha" value="" /><br>
+                                </td>
+                            </tr>                       
                         </tbody>
                     </table>
                 </div>
