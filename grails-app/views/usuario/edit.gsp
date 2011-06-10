@@ -45,10 +45,18 @@
                                   <label for="password"><g:message code="usuario.password.label" default="Password" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'password', 'errors')}">
-                                    <g:passwordField name="password" maxlength="20" value="${usuarioInstance?.password}" />
+                                    <g:passwordField name="password" maxlength="20" />
                                 </td>
                             </tr>
-                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="confirm"><g:message code="usuario.password.confirm.label" default="Confirmar Password" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'password', 'errors')}">
+                                    <g:passwordField name="confirm" maxlength="20"  />
+                                </td>
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                   <label for="nombre"><g:message code="usuario.nombre.label" default="Nombre" /></label>

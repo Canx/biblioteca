@@ -71,7 +71,6 @@ class UsuarioController {
     }
 
     def update = {
-        //params.password = DigestUtils.md5Hex(params.password)
         def usuarioInstance = Usuario.get(params.id)
         if (usuarioInstance) {
             if (params.version) {
@@ -83,7 +82,21 @@ class UsuarioController {
                     return
                 }
             }
-            usuarioInstance.properties = params
+
+            // Comprobamos que los passwords coinciden
+            if (params.password != params.confirm) {
+                flash.message = "La confirmación de la contraseña no coincide con la contraseña"
+                render(view: "edit", model: [usuarioInstance: usuarioInstance])
+                return
+            }
+            else {
+                def usuarioViejoPassword = usuarioInstance.password
+                usuarioInstance.properties = params
+                if (params.password == "") {
+                    usuarioInstance.password = usuarioViejoPassword
+                }
+            }
+            
             if (!usuarioInstance.hasErrors() && usuarioInstance.save(flush: true)) {
                 flash.message = "usuario.updated.message"
                 flash.args = [usuarioInstance.nombre, usuarioInstance.apellidos]
