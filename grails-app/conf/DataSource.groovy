@@ -25,8 +25,12 @@ environments {
     }
     production {
         dataSource {
+            pooled = true
             dbCreate = "update"
-            url = "jdbc:hsqldb:file:prodDb;shutdown=true"
+            url = "jdbc:mysql://localhost/biblioteca"
+            driverClassName = "com.mysql.jdbc.Driver"
+            username = "user_biblioteca"
+            password = "pwdbiblio"
         }
     }
 }
