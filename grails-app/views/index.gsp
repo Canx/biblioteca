@@ -52,18 +52,14 @@
         </style>
     </head>
     <body>
+        <g:if test="${flash.message}">
+            <div class="message">${flash.message}</div>
+        </g:if>
         <div id="pageBody">
             <h1>Bienvenido a la aplicación Biblioteca</h1>
 
 <p>Bienvenido a la aplicación Biblioteca. Esta aplicación ha sido desarrollada utilizando el framework de desarrollo rápido de aplicaciones Grails y permite la gestión de una biblioteca de un centro educativo cualquiera, con la posibilidad de reservar y prestar libros, así como gestionar las sanciones impuestas a los usuarios por el retraso en la devolución de los libros.</p>
 
-  <div id="controllerList" class="dialog">
-                <ul>
-                    <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                        <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-                    </g:each>
-                </ul>
-            </div>
         </div>
     </body>
 </html>

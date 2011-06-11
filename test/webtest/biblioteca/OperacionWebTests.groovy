@@ -5,7 +5,7 @@ class OperacionWebTests extends grails.util.WebTest {
     void testCreateFails() {
        invoke(url:"http://localhost:8080/biblioteca")
        clickLink "Login"
-       setSelectField(name: "login", text: "frangarcia")
+       setSelectField(id: "login", text: "frangarcia")
        clickButton "Login"
        clickLink "New Operacion"
        setCheckbox(name: "estado")
