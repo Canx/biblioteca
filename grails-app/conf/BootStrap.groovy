@@ -86,7 +86,19 @@ class BootStrap {
               libro: l2
               ).save()
 
+    def multa = new Multa(
+              usuario:profesor,
+              fecha_inicio: new Date() - 20,
+              fecha_fin: new Date() + 10,
+              estado: true
+              ).save()
 
+    def multa2 = new Multa(
+              usuario:profesor,
+              fecha_inicio: new Date(),
+              fecha_fin: new Date() + 20,
+              estado: true
+              ).save()
     //socio.addToOperaciones(op1).save()
   }
   def destroy = {}

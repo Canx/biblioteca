@@ -10,7 +10,8 @@ class MultaController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [multaInstanceList: Multa.list(params), multaInstanceTotal: Multa.count()]
+        // [multaInstanceList: Multa.list(params), multaInstanceTotal: Multa.count()]
+        [multaInstanceList: Multa.findAllByEstado(true,params), multaInstanceTotal: Multa.findAllByEstado(true).size()]
     }
 
     def create = {
@@ -21,6 +22,7 @@ class MultaController {
 
     def save = {
         def multaInstance = new Multa(params)
+        multaInstance.estado = true
         if (multaInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'multa.label', default: 'Multa'), multaInstance.id])}"
             redirect(action: "show", id: multaInstance.id)

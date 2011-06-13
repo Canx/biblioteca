@@ -5,6 +5,7 @@ class Multa {
     String descripcion
     Date fecha_inicio
     Date fecha_fin
+    Boolean estado
 
     static constraints = {
       usuario(validator: { return ((it?.tipo == "socio") || (it?.tipo == "profesor")) ? true : false })
