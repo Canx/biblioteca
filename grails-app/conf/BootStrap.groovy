@@ -45,7 +45,7 @@ class BootStrap {
               descripcion:'',
               ).save()
 
-    new Libro(titulo:'El ingenioso hidalgo don Quijote de la Mancha',
+    def l2 = new Libro(titulo:'El ingenioso hidalgo don Quijote de la Mancha',
               anyo:1605,
               autor:'Miguel de Cervantes Saavedra',
               isbn:'0844273619',
@@ -77,8 +77,17 @@ class BootStrap {
               usuario: socio,
               libro: l1
               ).save()
+    def op2 = new Operacion(
+              tipo:'prestamo',
+              estado:true,
+              fechaInicio:new Date() - 10,
+              fechaFin:new Date() + 1,
+              usuario:profesor,
+              libro: l2
+              ).save()
 
-    socio.addToOperaciones(op1).save()
+
+    //socio.addToOperaciones(op1).save()
   }
   def destroy = {}
 }
