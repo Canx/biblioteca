@@ -5,6 +5,9 @@ class Libro {
   String titulo
   String autor
   String editorial
+  byte[] portada
+  String nombreImagen
+  String contentTypeImagen
   Integer anyo
   String descripcion
   Date fecha
@@ -19,6 +22,9 @@ class Libro {
     anyo()
     fecha(nullable:true)
     descripcion(maxSize:1000,nullable:true)
+    portada(nullable:true, blank:true)
+    nombreImagen(nullable:true, blank:true)
+    contentTypeImagen(nullable:true, blank:true,inList:["image/gif", "image/jpeg","image/png"])
   }
 
   String toString() {

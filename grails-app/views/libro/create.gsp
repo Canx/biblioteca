@@ -23,7 +23,7 @@
                 <g:renderErrors bean="${libroInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form action="save" >
+            <g:form action="save" enctype="multipart/form-data">
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -81,7 +81,16 @@
                                     <g:datePicker name="fecha" precision="day" value="${libroInstance?.fecha}" default="none" noSelection="['': '']" />
                                 </td>
                             </tr>
-                        
+                         
+                            <tr class="prop">
+                              <td valign="top" class="name">
+                                <label for="tipo"><g:message code="libro.portada.label" default="Portada" />:</label>
+                              </td>
+                              <td valign="top" class="value ${hasErrors(bean:libroInstance, field:'portada', 'errors')}">
+                                <input type="file" name="portada"/>
+                              </td>
+                            </tr>
+
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="descripcion"><g:message code="libro.descripcion.label" default="Descripcion" /></label>

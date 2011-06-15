@@ -70,7 +70,16 @@
                             <td valign="top" class="value"><g:formatDate date="${libroInstance?.fecha}" /></td>
                             
                         </tr>
-                    
+                        
+                        <tr class="prop">
+                            <td valign="top" class="name">
+                                <label for="tipo">Portada:</label>
+                            </td>
+                            <td valign="top" class="value">
+                                <img height=100 src="${createLink(controller:'libro', action:'showPortada', id:params.id)}" />
+                            </td>
+                        </tr>
+ 
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="libro.descripcion.label" default="Descripcion" /></td>
                             

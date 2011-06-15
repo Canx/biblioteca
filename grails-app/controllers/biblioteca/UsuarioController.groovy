@@ -97,6 +97,11 @@ class UsuarioController {
                 }
             }
             
+            if (params.portada != null) {
+                params.contentTypeImagen = params.portada.contentType
+                params.nombreImagen = params.portada.originalFilename
+            }
+
             if (!usuarioInstance.hasErrors() && usuarioInstance.save(flush: true)) {
                 flash.message = "usuario.updated.message"
                 flash.args = [usuarioInstance.nombre, usuarioInstance.apellidos]

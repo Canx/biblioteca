@@ -29,6 +29,11 @@ class LibroController {
 
     def save = {
         def libroInstance = new Libro(params)
+        if (params.portada != null) {
+            libroInstance.nombreImagen = params.portada.originalFilename
+            libroInstance.contentTypeImagen = params.portada.contentType
+        }
+
         if (libroInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'libro.label', default: 'Libro'), libroInstance.id])}"
             redirect(action: "show", id: libroInstance.id)
@@ -72,7 +77,13 @@ class LibroController {
                     return
                 }
             }
+
             libroInstance.properties = params
+            if (params.portada != null) {
+                libroInstance.nombreImagen = params.portada.originalFilename
+                libroInstance.contentTypeImagen = params.portada.contentType
+            }
+
             if (!libroInstance.hasErrors() && libroInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'libro.label', default: 'Libro'), libroInstance.id])}"
                 redirect(action: "show", id: libroInstance.id)
@@ -104,5 +115,12 @@ class LibroController {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'libro.label', default: 'Libro'), params.id])}"
             redirect(action: "list")
         }
+    }
+
+    def showPortada = {
+        def libroInstance = Libro.get(params.id)
+        response.setHeader("Content-disposition", "inline; filename='${libroInstance.nombreImagen}'")
+        response.contentType="${libroInstance.contentTypeImagen}"
+        response.outputStream << libroInstance.portada
     }
 }

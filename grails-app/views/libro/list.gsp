@@ -21,6 +21,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>Portada</th> 
                             <g:sortableColumn property="isbn" title="${message(code: 'libro.isbn.label', default: 'Isbn')}" />
                             <g:sortableColumn property="titulo" title="${message(code: 'libro.titulo.label', default: 'Titulo')}" />
                             <g:sortableColumn property="autor" title="${message(code: 'libro.autor.label', default: 'Autor')}" />
@@ -38,6 +39,7 @@ title="${message(code: 'libro.fecha.label', default: 'Fecha')}" />
                     <g:each in="${libroInstanceList}" status="i" var="libroInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}"
 onclick="location.href='${createLink(action: 'show', id: libroInstance.id)}'">
+                            <td><img height=50 src="${createLink(controller:'libro',action:'showPortada',id: libroInstance.id)}" /></td>
                             <td><a href="${createLink(action: 'show', id: libroInstance.id)}">${fieldValue(bean: libroInstance, field: "isbn")}</a></td>
                             <td>${fieldValue(bean: libroInstance, field: "titulo")}</td>
                             <td>${fieldValue(bean: libroInstance, field: "autor")}</td>
