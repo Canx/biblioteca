@@ -123,4 +123,21 @@ class LibroController {
         response.contentType="${libroInstance.contentTypeImagen}"
         response.outputStream << libroInstance.portada
     }
+
+    def feed = {
+        render(feedType: "atom", feedVersion:"1.0") {
+            title = "Los nuevos libros"
+            link = "http://localhost:8080/biblioteca/libro/feed"
+            description = "Fuente RSS de los nuvos libros adquiridos por la biblioteca"
+
+            Libro.list().each() { libro ->
+                entry(libro.titulo) {
+                    link = "http://localhost:8080/biblioteca/libro/show/${libro.id}"
+                    author = libro.autor
+                    publishedDate = libro.fecha
+                    libro.descripcion
+                }
+            }
+        }
+    }
 }
