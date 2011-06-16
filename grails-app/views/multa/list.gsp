@@ -5,6 +5,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'multa.label', default: 'Multa')}" />
+        <g:javascript library="scriptaculous"/>
+        <export:resource />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -17,6 +19,7 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
+            <export:formats formats="['csv', 'excel', 'ods', 'pdf', 'xml']" />
             <div class="list">
                 <table>
                     <thead>

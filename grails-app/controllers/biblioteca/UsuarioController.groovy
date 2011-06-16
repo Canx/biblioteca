@@ -1,10 +1,11 @@
 package biblioteca
 
 import org.apache.commons.codec.digest.DigestUtils
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
 
 
 class UsuarioController {
-    def usuarioService, notificadorService, jcaptchaService
+    def exportService, usuarioService, notificadorService, jcaptchaService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -22,6 +23,12 @@ class UsuarioController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        
+        if (params?.format && params.format != "html") {
+            response.contentType = ConfigurationHolder.config.grails.mime.types[params.format]
+            response.setHeader("Content-disposition", "attachment;filename=usuarios.${params.format}")
+            exportService.export(params.format, response.outputStream, Usuario.list(params), [:], [:])
+        }
         [usuarioInstanceList: Usuario.list(params), usuarioInstanceTotal: Usuario.count()]
     }
 
