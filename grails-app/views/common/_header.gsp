@@ -1,6 +1,6 @@
 <div id="menu">
   <nobr>
-    <g:if test="${session.usuario}">
+    <usuario:identificado>
       <g:link controller="usuario" action="edit" id="${session.usuario?.id}">
       <b>${session.usuario?.nombre} ${session.usuario?.apellidos} (${session.usuario?.tipo})</b>
       </g:link> | <a href="javascript:void(0)" id="logout"><g:message code="encabezado.logout"/></a>
@@ -19,11 +19,11 @@
           window.location="${createLink(controller:'usuario',action:'logout')}"
         }
       </script>
-    </g:if>
+    </usuario:identificado>
 
-    <g:else>
+    <usuario:noidentificado>
       <g:link controller="usuario" action="login"><g:message code="encabezado.login"/></g:link> |
       <g:link controller="usuario" action="register">Registrarse</g:link>
-    </g:else>
+    </usuario:noidentificado>
   </nobr>
 </div>
