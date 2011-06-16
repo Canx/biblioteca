@@ -1,6 +1,9 @@
 package biblioteca
 
+import org.codehaus.groovy.grails.commons.ConfigurationHolder
+
 class LibroController {
+    def exportService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -18,6 +21,12 @@ class LibroController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
+
+        if (params?.format && params.format != "html") {
+            response.contentType = ConfigurationHolder.config.grails.mime.types[params.format]
+            response.setHeader("Content-disposition", "attachment;filename=libros.${params.format}")
+            exportService.export(params.format, response.outputStream, Libro.list(params), [:], [:])
+        }
         [libroInstanceList: Libro.list(params), libroInstanceTotal: Libro.count()]
     }
 
@@ -140,4 +149,5 @@ class LibroController {
             }
         }
     }
+
 }
