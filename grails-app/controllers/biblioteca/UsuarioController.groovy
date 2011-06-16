@@ -222,4 +222,20 @@ class UsuarioController {
             }
         }
     }
+
+    def checkLogin = {
+        def usuario = Usuario.findByLogin(params.login)
+        if (!usuario)
+            render("OK")
+        else
+            render("Nombre ya escogido por otro usuario")
+    }
+
+    def checkEmail = {
+        def email = Usuario.findByEmail(params.email)
+        if (!email)
+            render("")
+        else
+            render("Email ya pertenece a otro usuario")
+    }
 }

@@ -6,6 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'usuario.label', default: 'Usuario')}" />
+        <g:javascript library="jquery" plugin="jquery" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -39,7 +40,8 @@
                                     <label for="login"><g:message code="usuario.login.label" default="Login" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'login', 'errors')}">
-                                    <g:textField name="login" maxlength="20" value="${usuarioInstance?.login}" />
+                                    <g:remoteField action="checkLogin" update="spanCheckLogin" name="login" paramName="login"/>
+                                    <span id="spanCheckLogin"></span>
                                 </td>
                             </tr>
                         
@@ -83,7 +85,8 @@
                                     <label for="email"><g:message code="usuario.email.label" default="Email" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: usuarioInstance, field: 'email', 'errors')}">
-                                    <g:textField name="email" value="${usuarioInstance?.email}" />
+                                    <g:remoteField action="checkEmail" update="spanCheckEmail" name="email" paramName="email"/>
+                                    <div id="spanCheckEmail"></div>
                                 </td>
                             </tr>
                           

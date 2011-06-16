@@ -342,3 +342,16 @@ body {
     background: yellow;
     color: blue;
 }
+
+div#spanCheckEmail {
+    float: right;
+    height: 32px;
+    width: 200px;
+    background: url(../images/bad.jpg) no-repeat;
+    padding-left: 20px;
+}
+
+div#spanCheckEmail:empty {
+    background: url(../images/ok.jpg) no-repeat;
+}
+
