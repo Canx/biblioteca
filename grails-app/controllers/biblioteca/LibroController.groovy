@@ -36,6 +36,18 @@ class LibroController {
         return [libroInstance: libroInstance]
     }
 
+    def create_ajax = {
+        if (params.titulo != null) {
+            def libroInstance = new Libro()
+            libroInstance.properties = params
+            if (libroInstance.save(flush:true)) {
+                render(template:"tablelist",model:[libros:Libro.list(sort:"id",order:"desc")])     
+            }
+            else
+                render(template:"errors", model:[libroInstance: libroInstance])
+        }
+    }
+
     def save = {
         def libroInstance = new Libro(params)
         if (params.portada != null) {
@@ -72,6 +84,14 @@ class LibroController {
         else {
             return [libroInstance: libroInstance]
         }
+    }
+
+    def editTitulo = {
+        def libro = Libro.get(params.id)
+        libro.titulo = params.titulo
+        libro.save()
+	//log.trace("llega a editTitulo")
+        render params.titulo
     }
 
     def update = {
@@ -149,5 +169,4 @@ class LibroController {
             }
         }
     }
-
 }

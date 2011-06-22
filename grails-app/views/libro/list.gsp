@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'libro.label', default: 'Libro')}" />
-        <g:javascript library="scriptaculous"/>
+        <g:javascript library="jquery" plugin="jquery"/>
         <export:resource />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
@@ -13,6 +13,7 @@
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
             <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
+            <span class="menuButton"><g:link class="create" action="create_ajax">New Libro (Ajax)</g:link></span>
         </div>
         <div class="body">
             <h1><g:message code="default.list.label" args="[entityName]" /></h1>
@@ -40,16 +41,17 @@ title="${message(code: 'libro.fecha.label', default: 'Fecha')}" />
                     </thead>
                     <tbody>
                     <g:each in="${libroInstanceList}" status="i" var="libroInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}"
-onclick="location.href='${createLink(action: 'show', id: libroInstance.id)}'">
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                             <td><img height=50 src="${createLink(controller:'libro',action:'showPortada',id: libroInstance.id)}" /></td>
                             <td><a href="${createLink(action: 'show', id: libroInstance.id)}">${fieldValue(bean: libroInstance, field: "isbn")}</a></td>
-                            <td>${fieldValue(bean: libroInstance, field: "titulo")}</td>
+                            <td><g:editInPlace id="listlibros${libroInstance.id}" url="[controller:'libro', action: 'editTitulo', id:libroInstance.id]" paramName="titulo">
+                                ${fieldValue(bean: libroInstance, field: "titulo")}
+                                </g:editInPlace>
+                            </td>
                             <td>${fieldValue(bean: libroInstance, field: "autor")}</td>
                             <td>${fieldValue(bean: libroInstance, field: "editorial")}</td>
                             <td>${fieldValue(bean: libroInstance, field: "anyo")}</td>
-                            <td>${fieldValue(bean: libroInstance, field:
-"descripcion")}</td>
+                            <td>${fieldValue(bean: libroInstance, field: "descripcion")}</td>
                             <td><g:formatDate format="dd/MM/yyyy" date="${fieldValue(bean:
 libroInstance, field: "fecha")}" /></td>
                             <td>
