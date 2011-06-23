@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'operacion.label', default: 'Operacion')}" />
+        <g:javascript library="jquery" plugin="jquery" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -36,11 +37,11 @@
                     </thead>
                     <tbody>
                     <g:each in="${operacionInstanceList}" status="i" var="operacionInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}"
-onclick="location.href='${createLink(action: 'show', id:
-operacionInstance.id)}'">
-                            <td>${fieldValue(bean: operacionInstance, field: "tipo")}</td>
-                            <td><g:formatBoolean boolean="${operacionInstance.estado}" /></td>
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                            <td onclick="location.href='${createLink(action: 'show', id: operacionInstance.id)}'">
+                                ${fieldValue(bean: operacionInstance, field: "tipo")}</td>
+                            <td><g:checkBox onChange="${remoteFunction(action:'cambiarEstado',id:operacionInstance.id)}" name="estado" value="${operacionInstance?.estado}" /></td>
+                            
                             <td><g:formatDate date="${operacionInstance.fechaInicio}" /></td>
                             <td><g:formatDate date="${operacionInstance.fechaFin}" /></td>
                             <td>${fieldValue(bean: operacionInstance, field: "libro")}</td>

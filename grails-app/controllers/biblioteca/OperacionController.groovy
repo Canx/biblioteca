@@ -110,6 +110,14 @@ class OperacionController {
         }
     }
 
+    def cambiarEstado = {
+        if (params.id != null) {
+            def operacion = Operacion.get(params.id)
+            operacion.estado = !operacion.estado
+            operacion.save()
+        }
+    }
+
     def delete = {
         def operacionInstance = Operacion.get(params.id)
         if (operacionInstance) {
